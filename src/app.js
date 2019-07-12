@@ -2,7 +2,9 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
-var cors = require('cors')
+const cors = require('cors')
+const graphqlHTTP = require('express-graphql');
+const { schema, resolvers } = require('./resources');
 
 require('dotenv').config();
 
@@ -18,6 +20,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/', controllers);
+app.use('/graphql', graphqlHTTP({
+  schema,
+  rootValue: resolvers,
+  graphiql: true
+}))
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
