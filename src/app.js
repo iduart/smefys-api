@@ -9,7 +9,6 @@ const { schema, resolvers } = require('./resources');
 require('dotenv').config();
 
 const middlewares = require('./middlewares');
-const controllers = require('./controllers');
 
 const app = express();
 
@@ -19,7 +18,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/', controllers);
 app.use('/graphql', graphqlHTTP({
   schema,
   rootValue: resolvers,
