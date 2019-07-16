@@ -3,5 +3,11 @@ module.exports = `
     _id: ID!
     createdAt: String!
     name: String!
+    maxAmount: Int
+  }
+
+  input newCategory {
+    name: String!
+    maxAmount: Int
   }
 `;

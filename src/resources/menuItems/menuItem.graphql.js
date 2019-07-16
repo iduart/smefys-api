@@ -7,4 +7,11 @@ module.exports = `
     category: Category!
     imageUrl: String
   }
+
+  input newMenuItem {
+    name: String!
+    price: Int!
+    category: newCategory!
+    imageUrl: String
+  }
 `;
