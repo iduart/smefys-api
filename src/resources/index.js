@@ -5,16 +5,19 @@ const MenuItemSchema = require('./menuItems/menuItem.graphql');
 const MenuItemResolvers = require('./menuItems/menuItem.resolvers');
 const OrderSchema = require('./orders/order.graphql');
 const OrderResolvers = require('./orders/order.resolvers');
-const UserSchema = require('./users/users.graphql');
+const UserSchema = require('./users/user.graphql');
+const UserResolvers = require('./users/user.resolvers');
 
 const schema = buildSchema(`
   type Query {
     getCategories: [Category]!
     getItemsByCategory(categoryId: ID!): [MenuItem]!
+    getUserByProviderId(providerId: ID!): User!
   }
 
   type Mutation {
     createOrder(order: newOrder!): Order
+    createUser(user: newUser!): User
   }
 
   ${CategorySchema}
@@ -26,7 +29,8 @@ const schema = buildSchema(`
 const resolvers = {
   ...CategoryResolvers,
   ...MenuItemResolvers,
-  ...OrderResolvers
+  ...OrderResolvers,
+  ...UserResolvers
 };
 
 module.exports = {
