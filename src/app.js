@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const graphqlHTTP = require('express-graphql');
-const { schema, resolvers } = require('./resources');
+const schema = require('./resources');
 
 require('dotenv').config();
 
@@ -20,7 +20,6 @@ app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,
-  rootValue: resolvers,
   graphiql: true
 }))
 

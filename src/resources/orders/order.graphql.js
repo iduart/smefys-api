@@ -1,6 +1,7 @@
 module.exports = `
   type MenuItemQuantity {
     id: String!
+    items: [MenuItem]
     quantity: Int!
   }
 

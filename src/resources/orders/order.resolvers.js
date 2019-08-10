@@ -1,17 +1,15 @@
 const moment = require('moment');
 const OrderModel = require('./order.model');
 const UserModel = require('../users/user.model');
-const { getUserByProviderId } = require('../users/user.resolvers');
 
 const mapOrder = data => ({
   deliveryDate: moment(new Date(data.deliveryDate)),
   user: data.user,
-  menuItems: data.menuItems,
   total: data.total,
   delivered: false
 });
 
-const createOrder = async data => {
+const createOrder = async (_, data) => {
   const newOrder = mapOrder(data.order);
 
   //frontend always sends authProviderId
@@ -24,6 +22,16 @@ const createOrder = async data => {
   return order;
 };
 
+const getOrdersByUser = async (_, { userId }) => OrderModel.find({ user: userId })
+
 module.exports = {
-  createOrder
+  Query: {
+    getOrdersByUser
+  },
+  Mutation: {
+    createOrder
+  },
+  Order: {
+    menuItems: () => [{ id: 'hola', quantity: 20 }]
+  }
 };

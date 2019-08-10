@@ -1,4 +1,5 @@
-const { buildSchema } = require('graphql');
+const { makeExecutableSchema } = require('graphql-tools');
+const merge = require('lodash.merge')
 const CategorySchema = require('./categories/category.graphql');
 const CategoryResolvers = require('./categories/category.resolvers');
 const MenuItemSchema = require('./menuItems/menuItem.graphql');
@@ -8,32 +9,36 @@ const OrderResolvers = require('./orders/order.resolvers');
 const UserSchema = require('./users/user.graphql');
 const UserResolvers = require('./users/user.resolvers');
 
-const schema = buildSchema(`
+const typeDefs = `
   type Query {
     getCategories: [Category]!
     getItemsByCategory(categoryId: ID!): [MenuItem]!
     getUserByProviderId(providerId: ID!): User!
+    getOrdersByUser(userId: ID!): [Order]!
   }
 
   type Mutation {
     createOrder(order: newOrder!): Order
     createUser(user: newUser!): User
   }
-
+  
   ${CategorySchema}
   ${MenuItemSchema}
   ${OrderSchema}
   ${UserSchema}
-`);
+`;
 
-const resolvers = {
-  ...CategoryResolvers,
-  ...MenuItemResolvers,
-  ...OrderResolvers,
-  ...UserResolvers
-};
+const resolvers = merge(
+  {},
+  CategoryResolvers,
+  MenuItemResolvers,
+  OrderResolvers,
+  UserResolvers
+);
 
-module.exports = {
-  schema,
+const schema = makeExecutableSchema({
+  typeDefs,
   resolvers
-};
+});
+
+module.exports = schema;

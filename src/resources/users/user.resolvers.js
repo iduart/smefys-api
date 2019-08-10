@@ -10,17 +10,21 @@ const mapUser = data => {
   };
 };
 
-const createUser = async data => {
+const createUser = async (_, data) => {
   const newUser = mapUser(data.user);
   const user = new UserModel(newUser);
   user.save();
   return user;
 };
 
-const getUserByProviderId = async ({ providerId }) =>
+const getUserByProviderId = async (_, { providerId }) =>
   UserModel.findOne({ identityProviderId: providerId });
 
 module.exports = {
-  createUser,
-  getUserByProviderId
+  Query: {
+    getUserByProviderId
+  },
+  Mutation: {
+    createUser
+  }
 };

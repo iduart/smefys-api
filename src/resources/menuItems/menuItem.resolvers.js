@@ -1,7 +1,9 @@
 const MenuItem = require('./menuItem.model');
 
-const getItemsByCategory = async ({ categoryId }) => MenuItem.find({ category: categoryId });
+const getItemsByCategory = async (_, { categoryId }) => MenuItem.find({ category: categoryId });
 
 module.exports = {
-  getItemsByCategory
+  Query: {
+    getItemsByCategory
+  }
 };
