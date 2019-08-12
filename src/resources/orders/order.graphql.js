@@ -1,8 +1,10 @@
 module.exports = `
   type MenuItemQuantity {
     id: String!
-    items: [MenuItem]
     quantity: Int!
+    price: Int!
+    name: String!
+    item: MenuItem
   }
 
   type Order {
@@ -18,6 +20,8 @@ module.exports = `
   input newMenuItemQuantity {
     id: String!
     quantity: Int!
+    price: Int!
+    name: String!
   }
 
   input newOrder {

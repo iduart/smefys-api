@@ -15,6 +15,7 @@ const typeDefs = `
     getItemsByCategory(categoryId: ID!): [MenuItem]!
     getUserByProviderId(providerId: ID!): User!
     getOrdersByUser(userId: ID!): [Order]!
+    getOrder(id: ID!): Order!
   }
 
   type Mutation {

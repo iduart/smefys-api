@@ -17,7 +17,9 @@ const OrderSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'MenuItem'
       },
-      quantity: Number
+      quantity: Number,
+      name: String,
+      price: Number,
     }
   ],
   total: Number,
