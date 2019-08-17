@@ -25,7 +25,7 @@ const createOrder = async (_, data) => {
 };
 
 const getOrdersByUser = async (_, { userId }) =>
-  OrderModel.find({ user: userId });
+  OrderModel.find({ user: userId }).sort({ createdAt: -1 }).limit(10);
 
 const getOrder = async (_, { id }) => OrderModel.findOne({ _id: id });
 
