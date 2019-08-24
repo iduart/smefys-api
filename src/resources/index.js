@@ -23,8 +23,8 @@ const typeDefs = `
   }
 
   type Mutation {
-    createOrder(order: newOrder!): Order
-    createUser(user: newUser!): User
+    createOrder(order: newOrder!): Order!
+    createUser(user: newUser!): User!
   }
   
   ${CategorySchema}
