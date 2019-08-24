@@ -1,7 +1,7 @@
 module.exports = `
   type Category {
     _id: ID!
-    createdAt: String!
+    createdAt: DateTime!
     name: String!
     maxAmount: Int
   }

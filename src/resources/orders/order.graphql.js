@@ -9,8 +9,8 @@ module.exports = `
 
   type Order {
     _id: String!
-    createdAt: String!
-    deliveryDate: String!
+    createdAt: DateTime!
+    deliveryDate: Date!
     user: User!
     menuItems: [MenuItemQuantity]!
     total: Int!

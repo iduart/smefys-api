@@ -6,7 +6,8 @@ const CategorySchema = new Schema({
     type: String,
     required: true
   },
-  maxAmount: Number
+  maxAmount: Number,
+  active: Boolean
 });
 
 module.exports = model("Category", CategorySchema);

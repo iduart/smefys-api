@@ -1,7 +1,7 @@
 module.exports = `
   type MenuItem {
     _id: ID!
-    createdAt: String!
+    createdAt: DateTime!
     name: String!
     price: Int!
     category: Category!

@@ -1,5 +1,6 @@
 const { makeExecutableSchema } = require('graphql-tools');
 const merge = require('lodash.merge')
+const ScalarsResolvers = require('./scalars/scalars.resolvers');
 const CategorySchema = require('./categories/category.graphql');
 const CategoryResolvers = require('./categories/category.resolvers');
 const MenuItemSchema = require('./menuItems/menuItem.graphql');
@@ -10,6 +11,9 @@ const UserSchema = require('./users/user.graphql');
 const UserResolvers = require('./users/user.resolvers');
 
 const typeDefs = `
+  scalar DateTime
+  scalar Date
+
   type Query {
     getCategories: [Category]!
     getItemsByCategory(categoryId: ID!): [MenuItem]!
@@ -31,6 +35,7 @@ const typeDefs = `
 
 const resolvers = merge(
   {},
+  ScalarsResolvers,
   CategoryResolvers,
   MenuItemResolvers,
   OrderResolvers,

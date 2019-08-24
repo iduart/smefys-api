@@ -1,7 +1,7 @@
 module.exports = `
   type User {
     _id: String!
-    createdAt: String!
+    createdAt: DateTime!
     identityProviderId: String!
     name: String!
     phone: String!

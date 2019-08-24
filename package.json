@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.4.2",
+    "graphql-iso-date": "^3.6.1",
     "graphql-tools": "^4.0.5",
     "helmet": "^3.18.0",
     "lodash.merge": "^4.6.2",
